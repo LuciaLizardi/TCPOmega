@@ -1,11 +1,19 @@
+
+
+
 package client;
 
+import org.apache.activemq.ActiveMQConnection;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Client  extends Thread{
+public class Client  extends Thread implements Serializable {
 
     private String username;
     private ArrayList<String> contacts;
+
+
 
     public String getUsername() {
         return username;
@@ -22,7 +30,6 @@ public class Client  extends Thread{
 
 
     public void run(){
-
         try{
             TCP_Client client = new TCP_Client(username,contacts);
             client.askServer();
